@@ -1,11 +1,25 @@
-import merge from 'deepmerge';
-import { createBasicConfig } from '@open-wc/building-rollup';
+import typescript from '@rollup/plugin-typescript';
+import pkg from './package.json'
 
-const baseConfig = createBasicConfig();
-
-export default merge(baseConfig, {
-  input: './out-tsc/src/index.js',
-  output: {
-      dir: 'dist',
-  }
-});
+export default [
+  {
+    input: 'src/index.ts',
+    output: [
+      {
+        file: pkg.main,
+        format: 'cjs',
+      },
+      {
+        file: pkg.module,
+        format: 'es',
+      },
+    ],
+    external: [
+      ...Object.keys(pkg.dependencies || {}),
+      ...Object.keys(pkg.peerDependencies || {}),
+    ],
+    plugins: [
+      typescript({ tsconfig: './tsconfig.json' }),
+    ],
+  },
+]

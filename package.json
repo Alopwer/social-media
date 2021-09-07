@@ -1,18 +1,23 @@
 {
-  "name": "root",
+  "name": "@alopwer/social-media",
   "private": true,
   "devDependencies": {
     "lerna": "^4.0.0",
     "typescript": "^4.4.2"
   },
   "scripts": {
-    "frontend": "lerna run start --parallel --scope ./packages/frontend --scope ./packages/shared"
-  },
-  "workspaces": {
-    "packages": [
-      "packages/frontend/*",
-      "packages/backend/*",
-      "packages/shared/*"
-    ]
-  }
+    "bootstrap": "lerna bootstrap",
+    "clean": "lerna run --parallel clean",
+    "lerna:start": "lerna run start --parallel",
+    "lerna:start:f": "lerna run start --parallel --scope '@alopwer/{frontend,shared}",
+    "lerna:start:b": "lerna run start --parallel --scope '@alopwer/{backend,shared}"
+  },	
+  "workspaces": [
+    "packages/*"
+  ],
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Alopwer/social-media.git",
+  "author": "Nikita <ncalmic@urchinsys.com>",
+  "license": "MIT"
 }

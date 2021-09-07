@@ -1,5 +1,1 @@
-type StringNumber = 'string' | 'number'
-
-export {
-  StringNumber
-}
+export const greet = () => console.log('Hello, world!')

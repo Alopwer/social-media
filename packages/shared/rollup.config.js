@@ -1,4 +1,4 @@
-import typescript from '@rollup/plugin-typescript';
+import ts from "rollup-plugin-ts";
 import pkg from './package.json'
 
 export default [
@@ -19,7 +19,7 @@ export default [
       ...Object.keys(pkg.peerDependencies || {}),
     ],
     plugins: [
-      typescript({ tsconfig: './tsconfig.json' }),
+      ts(),
     ],
   },
 ]

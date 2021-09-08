@@ -1,24 +1,27 @@
 {
   "name": "@alopwer/backend",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
-  "scripts": {
-    "start": "nodemon index.ts"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@alopwer/shared": "1.0.0",
+    "@alopwer/shared": "^1.0.0",
     "express": "^4.17.1",
     "typescript": "^4.4.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
-    "@types/node": "^16.7.10",
+    "@types/node": "^16.7.13",
     "nodemon": "^2.0.12",
+    "rimraf": "^3.0.2",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.2"
-  }
+  },
+  "scripts": {
+    "start": "npm run clean && npm run build",
+    "build": "nodemon --watch 'src/**/*.ts' --exec \"ts-node\" src/index.ts",
+    "clean": "rimraf dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

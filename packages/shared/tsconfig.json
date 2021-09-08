@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
+    "allowUnreachableCode": false,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "module": "CommonJS",
+    "target": "ES6",
     "declaration": true,
-    "declarationDir": ".",
-    "module": "es6",
-    "noImplicitAny": true,
-    "outDir": "./dist",
-    "target": "es5"
+    "declarationMap": true,
+    "declarationDir": "dist/dts",
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": ["node_modules"]
+  "include": ["./src/**/*.ts"]
 }

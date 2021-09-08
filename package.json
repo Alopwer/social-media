@@ -7,15 +7,18 @@
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "bootstrap:f": "lerna bootstrap --scope '@alopwer/{frontend,shared}'",
+    "bootstrap:b": "lerna bootstrap --scope '@alopwer/{frontend,backend}'",
     "clean": "lerna run --parallel clean",
     "start": "lerna run start --parallel",
-    "start:f": "lerna run --include-dependencies start --parallel --scope '@alopwer/{frontend,shared}'",
-    "start:b": "lerna run --include-dependencies start --stream --parallel --scope '@alopwer/{backend,shared}'",
+    "start:f": "lerna run start --parallel --scope '@alopwer/{frontend,shared}'",
+    "start:b": "lerna run start --parallel --scope '@alopwer/{backend,shared}'",
     "build:f": "lerna run build --stream --scope '@alopwer/{frontend,shared}'",
     "build:b": "lerna run build --stream --scope '@alopwer/{backend,shared}'"
   },	
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "version": "1.0.0",
   "main": "index.js",

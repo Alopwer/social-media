@@ -1,21 +1,37 @@
 import dotenv from 'dotenv';
-import { app, connectToDatabase } from './app';
-import { initializeControllers } from './common/common.controller';
-
 dotenv.config();
 
-const PORT = process.env.SERVER_PORT;
+import { App } from './app';
+import { db } from './db';
+import { isOperationalError, logError } from './middlewares/errorHandler';
+import UsersController from './users/users.controller';
 
-initializeControllers()
+const PORT = process.env.SERVER_PORT!;
 
-const startServer = async () => {
-  try {
-    app.listen(PORT, () => {  
-      console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`); 
-    }); 
-  } catch (e) {
-    console.log(e)
+const app = new App(
+  [
+    new UsersController()
+  ],
+  PORT,
+);
+
+db.connectToDatabase((err) => {
+  if (err) {
+    console.log('Unable to connnect to database')
+    process.exit(1)
+  } else {
+    app.listen()
   }
-}
+})
 
-startServer()
+process.on('uncaughtException', error => {
+  logError(error)
+
+  if (!isOperationalError(error)) {
+    process.exit(1)
+  }
+})
+
+process.on('unhandledRejection', error => {
+  throw error
+})

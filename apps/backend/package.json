@@ -23,7 +23,7 @@
     "start": "npm run kill && npm run clean && nodemon",
     "build": "npm run kill && npm run compile && node .",
     "compile": "tsc",
-    "kill": "kill-port 8000",
+    "kill": "kill-port 8000 8080",
     "clean": "rimraf dist"
   },
   "keywords": [],

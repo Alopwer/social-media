@@ -1,1 +1,1 @@
-export * from './controller.routes'
+export * from './types'

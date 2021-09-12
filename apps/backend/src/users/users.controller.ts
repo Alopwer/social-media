@@ -1,8 +1,18 @@
-import { UsersRoute } from "@alopwer/shared";
-import express from "express";
+import { UsersRoute } from '@alopwer/shared';
+import * as express from 'express';
+import { UsersRoutes } from './users.routes';
 
-export const UsersController = express.Router()
+class UsersController {
+  public path = '/users';
+  public router = express.Router();
 
-UsersController.get(UsersRoute.GET_ALL, (req, res, next) => {
-  res.send('users get all')
-})
+  constructor() {
+    this.intializeRoutes();
+  }
+ 
+  public intializeRoutes() {
+    this.router.post(UsersRoute.CREATE, UsersRoutes.createUser);
+  }
+}
+ 
+export default UsersController;

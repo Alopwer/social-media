@@ -1,6 +1,4 @@
-import { UsersRoute } from '@alopwer/shared';
 import * as express from 'express';
-import { UsersRoutes } from './users.routes';
 
 class UsersController {
   public path = '/users';
@@ -11,7 +9,7 @@ class UsersController {
   }
  
   public intializeRoutes() {
-    this.router.post(UsersRoute.CREATE, UsersRoutes.createUser);
+    
   }
 }
  

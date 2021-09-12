@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import { App } from './app';
+import AuthController from './auth/auth.controller';
 import { db } from './db';
 import { isOperationalError, logError } from './middlewares/errorHandler';
 import UsersController from './users/users.controller';
@@ -10,7 +11,8 @@ const PORT = process.env.SERVER_PORT!;
 
 const app = new App(
   [
-    new UsersController()
+    new UsersController(),
+    new AuthController()
   ],
   PORT,
 );

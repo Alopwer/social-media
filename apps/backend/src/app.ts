@@ -1,7 +1,7 @@
 import cors from "cors";
 import express from "express";
 import { ControllerType } from "./common/controller.types";
-import { logErrorMiddleware } from "./middlewares/errorHandler";
+import { errorHandler } from "./middlewares/errorHandler";
 export class App {
   public app: express.Application;
   public port: number | string;
@@ -12,12 +12,16 @@ export class App {
  
     this.initializeMiddlewares();
     this.initializeControllers(controllers);
+    this.initializePostMiddlewares();
   }
  
   private initializeMiddlewares() {
     this.app.use(express.json());
     this.app.use(cors());
-    this.app.use(logErrorMiddleware)
+  }
+
+  private initializePostMiddlewares() {
+    this.app.use(errorHandler.responseError)
   }
  
   private initializeControllers(controllers: Array<ControllerType>) {

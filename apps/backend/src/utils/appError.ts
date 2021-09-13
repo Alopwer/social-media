@@ -8,7 +8,6 @@ export class AppError extends Error {
 
   constructor(name: string | CommonHttpError, httpCode: HttpCode, description: string, isOperational: boolean) {
     super(description);
-
     Object.setPrototypeOf(this, new.target.prototype); // restore prototype chain
 
     this.name = name;

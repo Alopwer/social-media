@@ -4,7 +4,7 @@ dotenv.config();
 import { App } from './app';
 import AuthController from './auth/auth.controller';
 import { db } from './db';
-import { isOperationalError, logError } from './middlewares/errorHandler';
+import { errorHandler } from './middlewares/errorHandler';
 import UsersController from './users/users.controller';
 
 const PORT = process.env.SERVER_PORT!;
@@ -26,14 +26,13 @@ db.connectToDatabase((err) => {
   }
 })
 
-process.on('uncaughtException', error => {
-  logError(error)
-
-  if (!isOperationalError(error)) {
-    process.exit(1)
+process.on('uncaughtException', (error: Error) => {
+  errorHandler.handleError(error);
+  if (!errorHandler.isTrustedError(error)) {
+    process.exit(1);
   }
-})
+ });
 
-process.on('unhandledRejection', error => {
-  throw error
-})
+ process.on('unhandledRejection', (reason: Error, promise: Promise<any>) => {
+  throw reason;
+ });

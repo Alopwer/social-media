@@ -12,6 +12,7 @@ class AuthController {
   
   public intializeRoutes() {
     this.router.post(AuthRoute.CREATE, AuthRouter.createUser);
+    this.router.post(AuthRoute.LOGIN, AuthRouter.loginUser);
   }
 }
 export default AuthController;

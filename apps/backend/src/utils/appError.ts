@@ -4,7 +4,7 @@ import { CommonHttpError, HttpCode } from "../common/error.types";
 export class AppError extends Error {
   public readonly name: string | CommonHttpError;
   public readonly httpCode: HttpCode;
-  public readonly isOperational: boolean;
+  public readonly isOperational: boolean = true;
 
   constructor(name: string | CommonHttpError, httpCode: HttpCode, description: string, isOperational: boolean) {
     super(description);

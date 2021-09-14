@@ -1,7 +1,7 @@
 import cors from "cors";
 import express from "express";
 import { ControllerType } from "./common/controller.types";
-import { errorHandler } from "./middlewares/errorHandler";
+import { errorHandler } from "./utils/errorHandler";
 export class App {
   public app: express.Application;
   public port: number | string;

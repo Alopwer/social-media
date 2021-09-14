@@ -7,15 +7,13 @@ export const encrypt = (text: string) => {
   const cipher = crypto.createCipheriv(algorithm, secretKey, initVector);
   const encrypted = Buffer.concat([cipher.update(text), cipher.final()]);
 
-  return {
-    initVector: initVector.toString('hex'),
-    content: encrypted.toString('hex')
-  };
+  return  `${initVector.toString('hex')}:${encrypted.toString('hex')}`;
 };
 
-export const decrypt = (hash: { initVector: string, content: string }) => {
-  const decipher = crypto.createDecipheriv(algorithm, secretKey, Buffer.from(hash.initVector , 'hex'));
-  const decrpyted = Buffer.concat([decipher.update(Buffer.from(hash.content, 'hex')), decipher.final()]);
+export const decrypt = (hash: string) => {
+  const [initVector, content] = hash.split(':');
+  const decipher = crypto.createDecipheriv(algorithm, secretKey, Buffer.from(initVector , 'hex'));
+  const decrpyted = Buffer.concat([decipher.update(Buffer.from(content, 'hex')), decipher.final()]);
 
   return decrpyted.toString();
 };

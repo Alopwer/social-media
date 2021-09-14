@@ -1,5 +1,7 @@
 import express from "express";
+import { JwtRoutePayloadI } from "../auth/auth.types";
 import { AppError } from "../utils/appError";
 
-export type RouteType = (req: express.Request, res: express.Response, next: express.NextFunction) => void;
+export type RouteBaseType = (req: express.Request, res: express.Response, next: express.NextFunction) => void;
+export type RouteAuthType = (req: express.Request & JwtRoutePayloadI, res: express.Response, next: express.NextFunction) => void;
 export type RouteErrorType = (err: AppError, req: express.Request, res: express.Response, next: express.NextFunction) => void;

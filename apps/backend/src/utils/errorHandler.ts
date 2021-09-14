@@ -1,5 +1,5 @@
 import { RouteErrorType } from "../common/routes.types";
-import { AppError } from "../utils/appError";
+import { AppError } from "./appError";
 
 class ErrorHandler {
   public handleError = async (err: Error) => {

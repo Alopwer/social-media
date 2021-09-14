@@ -4,7 +4,7 @@ dotenv.config();
 import { App } from './app';
 import AuthController from './auth/auth.controller';
 import { db } from './db';
-import { errorHandler } from './middlewares/errorHandler';
+import { errorHandler } from './utils/errorHandler';
 import UsersController from './users/users.controller';
 
 const PORT = process.env.SERVER_PORT!;

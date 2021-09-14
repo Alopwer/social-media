@@ -1,4 +1,4 @@
-import { LoginAuthModel, UserAuthModel } from "@alopwer/shared";
+import { LoginAuthModel, UserAuthModel, UserAuthModelResponse } from "@alopwer/shared";
 import { db } from "../db";
 
 // access db here
@@ -19,8 +19,8 @@ export class AuthDal {
   static getUser = async (loginData: LoginAuthModel) => {
     const { email } = loginData
     const dbResult = 
-      await this.getCollection().findOne<Pick<UserAuthModel, 'password'>>({ email }, { projection: { password: 1 } });
+      await this.getCollection().findOne({ email });
   
-    return dbResult;
+    return dbResult as UserAuthModelResponse;
   }
 }

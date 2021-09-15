@@ -6,13 +6,15 @@ import AuthController from './auth/auth.controller';
 import { db } from './db';
 import { errorHandler } from './utils/errorHandler';
 import UsersController from './users/users.controller';
+import { PostsController } from './posts/posts.controller';
 
 const PORT = process.env.SERVER_PORT!;
 
 const app = new App(
   [
     new UsersController(),
-    new AuthController()
+    new AuthController(),
+    new PostsController()
   ],
   PORT,
 );

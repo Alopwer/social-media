@@ -4,7 +4,7 @@ import { AppError } from "../utils/appError";
 import { CommonHttpError, HttpCode } from "../common/error.types";
 import { JwtPayloadI } from "../auth/auth.types";
 
-const verifyToken: RouteAuthType = (req, res, next) => {
+export const auth: RouteAuthType = (req, res, next) => {
   const authHeader = req.headers["Authorization"] as string;
 
   if (!authHeader) {

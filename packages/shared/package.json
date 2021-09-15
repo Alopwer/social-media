@@ -9,7 +9,6 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@types/mongodb": "^4.0.7",
     "rimraf": "^3.0.2",
     "rollup": "^2.56.3",
     "rollup-plugin-ts": "^1.4.1",
